@@ -3,7 +3,7 @@ import Create from "./components/Create";
 import Read from "./components/Read";
 
 const App = () => {
-  // State to store a list of users
+  // State to store the list of registered users
   const [users, setUsers] = useState([
     { name: "john", age: 12 },
     { name: "Ankur", age: 32 },
@@ -12,7 +12,10 @@ const App = () => {
 
   return (
     <div>
-      <Create />
+      {/* Form to add new users */}
+      <Create setusers={setUsers} />
+
+      {/* Component to display the list of users */}
       <Read user={users} setusers={setUsers} />
     </div>
   );

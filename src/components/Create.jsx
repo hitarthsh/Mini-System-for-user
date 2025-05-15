@@ -1,40 +1,35 @@
 import React, { useState } from "react";
 
 const Create = (props) => {
-//   console.log(props);
+  // State for managing user input
+  const [fullname, setFullname] = useState("");
+  const [age, setAge] = useState(18);
 
-  // State to manage the input for new user registration
-  const [fullname, setfullname] = useState(""); // Full name of the new user
-  const [age, setage] = useState(18); // Age of the new user
+  // Handle form submission to add a new user
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const newUser = { name: fullname, age: Number(age) };
 
-  // Handler for form submission
-  const SubmitHandler = (e) => {
-    e.preventDefault(); // Prevent page refresh on form submission
-    const newuser = { fullname, age }; // Create a new user object
-    console.log(newuser); // Log the new user to the console (for debugging)
-
-    // set the user in the setusers
-    // Optional: Add the new user to the list
-    // setUsers([...users, newuser]);
+    // Update the parent component's user list
+    props.setusers((prevUsers) => [...prevUsers, newUser]);
 
     // Clear input fields after submission
-    setfullname("");
-    setage(18);
+    setFullname("");
+    setAge(18);
   };
 
   return (
     <div>
-      {/* Form for registering a new user */}
       <h1>Register User</h1>
-      <form onSubmit={SubmitHandler}>
+      <form onSubmit={submitHandler}>
         <input
-          onChange={(e) => setfullname(e.target.value)}
+          onChange={(e) => setFullname(e.target.value)}
           value={fullname}
           type="text"
           placeholder="Full Name"
         />
         <input
-          onChange={(e) => setage(e.target.value)}
+          onChange={(e) => setAge(e.target.value)}
           value={age}
           type="number"
           placeholder="Age"
