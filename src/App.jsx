@@ -1,23 +1,29 @@
-import React, { useState } from "react";
-import Create from "./components/Create";
-import Read from "./components/Read";
+import { useState } from "react";
 
 const App = () => {
-  // State to store the list of registered users
-  const [users, setUsers] = useState([
-    { name: "john", age: 12 },
-    { name: "Ankur", age: 32 },
-    { name: "Ayush", age: 22 },
+  const [todos, settodos] = useState([
+    { id: 1, title: "kamm krle bhai", isCompleted: false },
   ]);
 
-  return (
-    <div>
-      {/* Form to add new users */}
-      <Create setusers={setUsers} />
+  const [title, settitle] = useState("");
 
-      {/* Component to display the list of users */}
-      <Read user={users} setusers={setUsers} />
-    </div>
+  return (
+    <>
+      <h1>Create Tasks</h1>
+      <form>
+        <input
+          onChange={(e) => settitle(e.target.value)}
+          value={title}
+          type="text"
+          placeholder="title"
+        />
+        <br />
+        <input type="checkbox" /> Completed
+        <br />
+        <br />
+        <button>Create Todo</button>
+      </form>
+    </>
   );
 };
 
