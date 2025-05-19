@@ -16,9 +16,17 @@ const App = () => {
       isCompleted: false,
     };
 
-    console.log(newtodo);
+    // const copytodos = [...todos]
+    // copytodos.push(newtodo)
+    // settodos(copytodos);
 
+    settodos([...todos, newtodo])
   }
+
+  const rendertodos = todos.map(todo => {
+    return <li key={todo.id}> {todo.title}</li>;
+  });
+
   return (
     <>
       <h1>Create Tasks</h1>
@@ -33,6 +41,10 @@ const App = () => {
         <br />
         <button>Create Todo</button>
       </form>
+      <br />
+      <hr />
+      <h1>Pending Todos</h1>
+      <ol>{rendertodos}</ol>
     </>
   );
 };
