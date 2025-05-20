@@ -17,8 +17,7 @@ const Read = (props) => {
         key={todo.id}
       >
         {" "}
-        {todo.title} | {" "}
-        <span onClick={() => DeleteHandler(todo.id)}>Delete</span>
+        {todo.title} | <span onClick={() => DeleteHandler(todo.id)}>Delete</span>
       </li>
     );
   });
