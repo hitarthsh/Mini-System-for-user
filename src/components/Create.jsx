@@ -5,6 +5,8 @@ const Create = (props) => {
   const todos = props.todos;
   const settodos = props.settodos;
 
+  const [title, settitle] = useState("");
+
   const SubmitHandler = (e) => {
     e.preventDefault();
 
@@ -12,15 +14,17 @@ const Create = (props) => {
 
     const newtodo = {
       id: nanoid(),
-      title,
-      isCompleted: true,
+      title: title.trim(),
+      isCompleted: false,
     };
 
     settodos([...todos, newtodo]);
-    // settitle(""); // clear input after submission
+    settitle(""); // clear input after submission
   };
 
-  const [title, settitle] = useState("");
+  const Cleardata = () => {
+    settodos([]);
+  };
 
   const buttoncss = {
     color: "white",
@@ -29,11 +33,9 @@ const Create = (props) => {
     border: "1px solid white",
     borderRadius: "50px 20px",
     fontSize: "15px",
+    cursor: "pointer",
   };
 
-  const Cleardata = () => {
-    settodos([]);
-  };
   return (
     <Fragment>
       <h1>Create Tasks</h1>
@@ -46,8 +48,11 @@ const Create = (props) => {
         />
         <br />
         <br />
-        <button style={buttoncss}>Create Todo</button> |{" "}
-        <button style={buttoncss} onClick={Cleardata}>
+        <button style={buttoncss} type="submit">
+          Create Todo
+        </button>{" "}
+        |{" "}
+        <button style={buttoncss} type="button" onClick={Cleardata}>
           All Clear Data
         </button>
       </form>
