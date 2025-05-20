@@ -7,17 +7,17 @@ const Create = (props) => {
 
   const SubmitHandler = (e) => {
     e.preventDefault();
+
+    if (title.trim() === "") return;
+
     const newtodo = {
       id: nanoid(),
       title,
       isCompleted: true,
     };
 
-    // const copytodos = [...todos]
-    // copytodos.push(newtodo)
-    // settodos(copytodos);
-
     settodos([...todos, newtodo]);
+    // settitle(""); // clear input after submission
   };
 
   const [title, settitle] = useState("");
@@ -29,6 +29,10 @@ const Create = (props) => {
     border: "1px solid white",
     borderRadius: "50px 20px",
     fontSize: "15px",
+  };
+
+  const Cleardata = () => {
+    settodos([]);
   };
   return (
     <Fragment>
@@ -42,7 +46,10 @@ const Create = (props) => {
         />
         <br />
         <br />
-        <button style={buttoncss}>Create Todo</button>
+        <button style={buttoncss}>Create Todo</button> |{" "}
+        <button style={buttoncss} onClick={Cleardata}>
+          All Clear Data
+        </button>
       </form>
     </Fragment>
   );

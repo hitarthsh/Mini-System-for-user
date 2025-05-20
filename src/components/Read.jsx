@@ -1,8 +1,10 @@
 import React from "react";
 import { Fragment } from "react";
+import { nanoid } from "nanoid";
 
 const Read = (props) => {
   const todos = props.todos;
+  const todo = props.todo;
   const settodos = props.settodos;
 
   const DeleteHandler = (id) => {
@@ -17,7 +19,8 @@ const Read = (props) => {
         key={todo.id}
       >
         {" "}
-        {todo.title} | <span onClick={() => DeleteHandler(todo.id)}>Delete</span>
+        {todo.title} |{" "}
+        <span onClick={() => DeleteHandler(todo.id)}>Delete</span> |{" "}
       </li>
     );
   });
@@ -27,7 +30,7 @@ const Read = (props) => {
       <h1 style={{ color: "tomato" }}>Pending Todos</h1>
       <ol>{rendertodos}</ol>
     </Fragment>
-  );
+  );  
 };
 
 export default Read;
