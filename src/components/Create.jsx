@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
 
 const Create = (props) => {
@@ -26,21 +26,12 @@ const Create = (props) => {
     settodos([]);
   };
 
-  const buttoncss = {
-    color: "white",
-    padding: "5px 10px",
-    backgroundColor: "transparent",
-    border: "1px solid white",
-    borderRadius: "50px 20px",
-    fontSize: "15px",
-    cursor: "pointer",
-  };
-
   return (
-    <Fragment>
-      <h1>Create Tasks</h1>
+    <div className="border w-[80%] p-10">
+      <h1 className="mb-10 text-5xl font-thin">Set Reminders for tasks</h1>
       <form onSubmit={SubmitHandler}>
         <input
+          className="p-2 border-b-2 w-full text2xl font-thin outline-0"
           onChange={(e) => settitle(e.target.value)}
           value={title}
           type="text"
@@ -48,15 +39,20 @@ const Create = (props) => {
         />
         <br />
         <br />
-        <button style={buttoncss} type="submit">
-          Create Todo
-        </button>{" "}
-        |{" "}
-        <button style={buttoncss} type="button" onClick={Cleardata}>
-          All Clear Data
-        </button>
+        <div className="flex gap-x-4 mt-5">
+          <button className="text-xl px-10 py-2 border rounded" type="submit">
+            Create Todo
+          </button>
+          <button
+            className="text-xl px-10 py-2 border rounded"
+            type="button"
+            onClick={Cleardata}
+          >
+            All Clear Data
+          </button>
+        </div>
       </form>
-    </Fragment>
+    </div>
   );
 };
 
