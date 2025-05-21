@@ -27,11 +27,13 @@ const Create = (props) => {
   };
 
   return (
-    <div className="border w-[80%] p-10">
-      <h1 className="mb-10 text-5xl font-thin">Set Reminders for tasks</h1>
+    <div className=" w-[60%] p-10">
+      <h1 className="mb-10 text-5xl  ">
+        Set <span className="text-red-400">Reminders</span> for <br /> tasks
+      </h1>
       <form onSubmit={SubmitHandler}>
         <input
-          className="p-2 border-b-2 w-full text2xl font-thin outline-0"
+          className="p-4 border-b-2 w-full text5xl   outline-0"
           onChange={(e) => settitle(e.target.value)}
           value={title}
           type="text"
@@ -40,11 +42,14 @@ const Create = (props) => {
         <br />
         <br />
         <div className="flex gap-x-4 mt-5">
-          <button className="text-xl px-10 py-2 border rounded" type="submit">
+          <button
+            className="mt-5 text-xl px-10 py-2 border rounded-3xl"
+            type="submit"
+          >
             Create Todo
           </button>
           <button
-            className="text-xl px-10 py-2 border rounded"
+            className="mt-5 text-xl px-10 py-2 border rounded-3xl"
             type="button"
             onClick={Cleardata}
           >

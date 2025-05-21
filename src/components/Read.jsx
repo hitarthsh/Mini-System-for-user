@@ -1,7 +1,3 @@
-import React from "react";
-import { Fragment } from "react";
-import { nanoid } from "nanoid";
-
 const Read = (props) => {
   const todos = props.todos;
   const todo = props.todo;
@@ -15,22 +11,28 @@ const Read = (props) => {
   const rendertodos = todos.map((todo) => {
     return (
       <li
-        style={{ color: todo.isCompleted ? "green" : "tomato" }}
         key={todo.id}
+        className="flex justify-between items-center p-4 bg-gray-900 rounded-2xl mb-5"
       >
-        {" "}
-        {todo.title} |{" "}
-        <span onClick={() => DeleteHandler(todo.id)}>Delete</span> |{" "}
+        <span className="text-xl  ">{todo.title}</span>
+        <button
+          className="mb-5 text-sm  "
+          onClick={() => DeleteHandler(todo.id)}
+        >
+          Delete
+        </button>
       </li>
     );
   });
 
   return (
-    <Fragment>
-      <h1 style={{ color: "tomato" }}>Pending Todos</h1>
+    <div className="w-[40%] p-10">
+      <h1 className="mb-10 text-6xl  ">
+        <span className="text-amber-500">Pending</span> Todos
+      </h1>
       <ol>{rendertodos}</ol>
-    </Fragment>
-  );  
+    </div>
+  );
 };
 
 export default Read;
