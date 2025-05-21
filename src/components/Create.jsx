@@ -1,11 +1,8 @@
-import { useState } from "react";
 import { nanoid } from "nanoid";
 
 const Create = (props) => {
   const todos = props.todos;
   const settodos = props.settodos;
-
-  const [title, settitle] = useState("");
 
   const SubmitHandler = (e) => {
     e.preventDefault();
@@ -14,12 +11,10 @@ const Create = (props) => {
 
     const newtodo = {
       id: nanoid(),
-      title: title.trim(),
+      // title: title.trim(),
       isCompleted: false,
     };
 
-    settodos([...todos, newtodo]);
-    settitle(""); // clear input after submission
   };
 
   const Cleardata = () => {
@@ -34,8 +29,6 @@ const Create = (props) => {
       <form onSubmit={SubmitHandler}>
         <input
           className="p-4 border-b-2 w-full text5xl   outline-0"
-          onChange={(e) => settitle(e.target.value)}
-          value={title}
           type="text"
           placeholder="title"
         />
