@@ -1,11 +1,10 @@
 import { useState } from "react";
 import Create from "./components/Create";
 import Read from "./components/Read";
-import SimpleForm from "./components/SimpleForm";
 
 const App = () => {
   const [todos, settodos] = useState([
-    // { id: 1, title: "kamm krle bhai", isCompleted: false },
+    { id: 1, title: "kamm krle bhai", isCompleted: false },
   ]);
 
   return (
