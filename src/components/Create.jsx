@@ -1,21 +1,30 @@
 import { nanoid } from "nanoid";
+import { useForm } from "react-hook-form";
 
 const Create = (props) => {
   const todos = props.todos;
   const settodos = props.settodos;
 
-  const SubmitHandler = (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-    if (title.trim() === "") return;
+  const SubmitHandler = (data) => {
+    console.log(data);
+    data.isCompleted = false;
+    data.id = nanoid();
 
-    const newtodo = {
-      id: nanoid(),
-      // title: title.trim(),
-      isCompleted: false,
-    };
+    const copytodos = [...todos];
+    copytodos.push(data);
+    settodos(copytodos);
 
+    reset();
   };
+
+  // console.log();
 
   const Cleardata = () => {
     settodos([]);
@@ -26,12 +35,20 @@ const Create = (props) => {
       <h1 className="mb-10 text-5xl  ">
         Set <span className="text-red-400">Reminders</span> for <br /> tasks
       </h1>
-      <form onSubmit={SubmitHandler}>
+      <form onSubmit={handleSubmit(SubmitHandler)}>
         <input
-          className="p-4 border-b-2 w-full text5xl   outline-0"
+          {...register("title", { required: "title can not be empty" })}
+          className="p-4 border-b-2 border-solid w-full text5xl outline-0  "
           type="text"
           placeholder="title"
         />
+        {/* {errors && errors.title && errors.title.message && (
+          <small>{errors.title.message}</small>
+        )} */}
+
+        <small className="font-thin text-2xl flex justify-center items-center text-red-500">
+          {errors?.title?.message}
+        </small>
         <br />
         <br />
         <div className="flex gap-x-4 mt-5">
