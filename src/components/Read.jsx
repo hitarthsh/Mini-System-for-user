@@ -1,9 +1,9 @@
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { todocontext } from "./Wrapper";
 
-const Read = (props) => {
-  const todos = props.todos;
-  const todo = props.todo;
-  const settodos = props.settodos;
+const Read = () => {
+  const [todos, settodos] = useContext(todocontext);
 
   const DeleteHandler = (id) => {
     const filtertodo = todos.filter((todos) => todos.id != id);
@@ -19,7 +19,7 @@ const Read = (props) => {
       >
         <span className="text-xl  ">{todo.title}</span>
         <button
-          className="mb-5 text-sm  "
+          className="mb-5 mt-5 text-sm  "
           onClick={() => DeleteHandler(todo.id)}
         >
           Delete
